@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sqlite_database/db_handler.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -19,7 +20,11 @@ class _HomeState extends State<Home> {
       
       body: Center(
         child: ElevatedButton(
-            onPressed: (){}, 
+            onPressed: ()async{
+             // await DBHandler().insertData();
+              final data = await DBHandler().readData();
+              print(data);
+            },
             child: Text("Insert", )
         ),
       ),

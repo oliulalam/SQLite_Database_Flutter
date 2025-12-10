@@ -18,10 +18,10 @@ class DBHandler{
     _database = await openDatabase(path, version: 1, onCreate: (db, version){
       db.execute(
         '''
-        CREATE  TABLE DatabaseTable (
+        CREATE TABLE myTable (
         id INTEGER PRIMARY KEY,
         name TEXT,
-        age INTEGER,
+        age INTEGER
         )
         '''
       );
@@ -32,16 +32,17 @@ class DBHandler{
   insertData() async{
     Database? db = await database;
 
-    db!.insert('DatabaseTable', {
-      'id': '1',
+    db!.insert('myTable', {
+      'id': 1,
       'name': 'Oliul Alam',
-      'age': '25',
+      'age': 25,
     });
   }
 
   readData() async{
     Database? db = await database;
-    db!.query('DatabaseTable');
+    final list = await db!.query('myTable');
+    return list;
   }
 
 }
