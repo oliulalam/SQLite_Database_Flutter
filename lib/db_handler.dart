@@ -45,4 +45,27 @@ class DBHandler{
     return list;
   }
 
+  deletedData(int id) async{
+    Database? db = await database;
+    await db!.delete(
+        "myTable",
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+  }
+
+  updateData(int id, String name, int age) async{
+    Database? db = await database;
+    Map<String, Object> map ={
+      'id': id,
+      'name': name,
+      'age': age,
+    };
+    await db!.update(
+        "myTable", map,
+      where: 'id= ?',
+      whereArgs: [id],
+    );
+  }
+
 }

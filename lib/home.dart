@@ -17,19 +17,47 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.blue[400],
         foregroundColor: Colors.white,
       ),
-      
-      body: Center(
-        child: ElevatedButton(
-            onPressed: ()async{
-              await DBHandler().insertData(3, 'Asad', 29 );
 
-              final data = await DBHandler().readData();
-              print(data);
-            },
-            child: Text("Insert", )
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () async {
+                await DBHandler().insertData(3, 'Asad', 29);
+
+                final data = await DBHandler().readData();
+                print(data);
+              },
+              child: Text("Insert"),
+            ),
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () async {
+                final data = await DBHandler().readData();
+                print(data);
+              },
+              child: Text("Read Data"),
+            ),
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () async {
+                await DBHandler().deletedData(2);
+                print("Deleted Success");
+              },
+              child: Text("Deleted Data"),
+            ),
+            SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () async {
+                final data = await DBHandler().updateData(1, 'Fahim', 24);
+                print('Update Success');
+              },
+              child: Text("Updated Data"),
+            ),
+          ],
         ),
       ),
-      
     );
   }
 }
