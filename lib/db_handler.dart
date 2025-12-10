@@ -15,7 +15,7 @@ class DBHandler{
     Directory directory = await getApplicationDocumentsDirectory();
     String path = join(directory.path, 'mydatabase.db');
 
-    _database = await openDatabase(path, version: 1, onCreate: (db, version){
+    _database = await openDatabase(path, version: 2, onCreate: (db, version){
       db.execute(
         '''
         CREATE TABLE myTable (
@@ -29,14 +29,14 @@ class DBHandler{
     return _database;
   }
 
-  insertData() async{
+  insertData(int id, String name, int age) async{
     Database? db = await database;
-
-    db!.insert('myTable', {
-      'id': 1,
-      'name': 'Oliul Alam',
-      'age': 25,
-    });
+    Map<String, Object> map ={
+      'id': id,
+      'name': name,
+      'age': age,
+    };
+    await db!.insert('myTable', map );
   }
 
   readData() async{

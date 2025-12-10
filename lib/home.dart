@@ -21,7 +21,8 @@ class _HomeState extends State<Home> {
       body: Center(
         child: ElevatedButton(
             onPressed: ()async{
-             // await DBHandler().insertData();
+              await DBHandler().insertData(3, 'Asad', 29 );
+
               final data = await DBHandler().readData();
               print(data);
             },
