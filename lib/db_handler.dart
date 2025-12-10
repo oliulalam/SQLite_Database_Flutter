@@ -54,15 +54,10 @@ class DBHandler{
     );
   }
 
-  updateData(int id, String name, int age) async{
+  updateData(int id, Map<String, Object?> data) async{
     Database? db = await database;
-    Map<String, Object> map ={
-      'id': id,
-      'name': name,
-      'age': age,
-    };
     await db!.update(
-        "myTable", map,
+        "myTable", data,
       where: 'id= ?',
       whereArgs: [id],
     );

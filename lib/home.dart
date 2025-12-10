@@ -50,7 +50,11 @@ class _HomeState extends State<Home> {
             SizedBox(height: 16),
             ElevatedButton(
               onPressed: () async {
-                final data = await DBHandler().updateData(1, 'Fahim', 24);
+                final data = await DBHandler().updateData(1, {
+                  'id': 1,
+                  'name': 'Oliul Alam',
+                  'age': 26,
+                });
                 print('Update Success');
               },
               child: Text("Updated Data"),
