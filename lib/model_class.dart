@@ -1,9 +1,9 @@
 class ModelClass {
-  final int id;
+  final int? id;
   final String name;
   final int age;
 
-  ModelClass({required this.id, required this.name, required this.age});
+  ModelClass({ this.id, required this.name, required this.age});
 
   factory ModelClass.fromMap(Map<String, dynamic> map) {
     return ModelClass(
