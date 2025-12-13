@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sqlite_database/data_show_screen.dart';
 import 'package:sqlite_database/db_handler.dart';
 import 'package:sqlite_database/model_class.dart';
 
@@ -111,7 +112,7 @@ class _HomeState extends State<Home> {
             ElevatedButton(
               onPressed: () async {
                 final data = await DBHandler().readData();
-                print(data);
+                print(data[3].age);
               },
               child: Text("Read Data"),
             ),
@@ -136,6 +137,15 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
+      
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          Navigator.push(context, MaterialPageRoute(builder: (context) => DataShowScreen()));
+        },
+        child: Icon(Icons.skip_next, color: Colors.black,),
+      ),
     );
+    
+    
   }
 }
